@@ -5,3 +5,7 @@
   text-align: center;
   overflow: hidden;
 }
+
+.axis-label {
+  font-size: 2em;
+}
