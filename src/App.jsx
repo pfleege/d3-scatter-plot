@@ -4,6 +4,7 @@ import useData from "./assets/useData";
 import DataMarks from "./assets/DataMarks";
 import AxisBottom from "./assets/AxisBottom";
 import AxisLeft from "./assets/AxisLeft";
+import Dropdown from "./assets/Dropdown";
 
 const width = 960;
 const height = 500;
@@ -34,38 +35,41 @@ function App() {
     .range([0, innerHeight]);
 
   return (
-    <svg height={height} width={width}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <AxisBottom xScale={xScale} innerHeight={innerHeight} />
-        <text
-          className="axis-label"
-          x={innerWidth / 2}
-          y={innerHeight + 50}
-          textAnchor="middle"
-          fill="white"
-        >
-          {xAxisLabel}
-        </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} />
-        <text
-          className="axis-label"
-          transform={`translate(${-yAxisLabelOffset},${
-            innerHeight / 2
-          }) rotate(-90)`}
-          textAnchor="middle"
-          fill="white"
-        >
-          {yAxisLabel}
-        </text>
-        <DataMarks
-          data={data}
-          xScale={xScale}
-          yScale={yScale}
-          xValue={xValue}
-          yValue={yValue}
-        />
-      </g>
-    </svg>
+    <>
+      <Dropdown />
+      <svg height={height} width={width}>
+        <g transform={`translate(${margin.left}, ${margin.top})`}>
+          <AxisBottom xScale={xScale} innerHeight={innerHeight} />
+          <text
+            className="axis-label"
+            x={innerWidth / 2}
+            y={innerHeight + 50}
+            textAnchor="middle"
+            fill="white"
+          >
+            {xAxisLabel}
+          </text>
+          <AxisLeft yScale={yScale} innerWidth={innerWidth} />
+          <text
+            className="axis-label"
+            transform={`translate(${-yAxisLabelOffset},${
+              innerHeight / 2
+            }) rotate(-90)`}
+            textAnchor="middle"
+            fill="white"
+          >
+            {yAxisLabel}
+          </text>
+          <DataMarks
+            data={data}
+            xScale={xScale}
+            yScale={yScale}
+            xValue={xValue}
+            yValue={yValue}
+          />
+        </g>
+      </svg>
+    </>
   );
 }
 
