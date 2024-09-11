@@ -5,6 +5,7 @@ import DataMarks from "./assets/DataMarks";
 import AxisBottom from "./assets/AxisBottom";
 import AxisLeft from "./assets/AxisLeft";
 import Dropdown from "./assets/Dropdown";
+import { useState } from "react";
 
 const width = 960;
 const height = 500;
@@ -15,15 +16,20 @@ const yAxisLabelOffset = 45;
 
 function App() {
   const data = useData();
-  console.log(data);
+
+  const initialValueX = "sepal_length";
+  const [selectedValueX, setSelectedValueX] = useState(initialValueX);
+  const xValue = (d) => d[selectedValueX];
+  // const xAxisLabel = "Sepal Length";
+
+  const yValue = (d) => d.sepal_width;
+  const yAxisLabel = "Sepal Width";
+
   if (!data) {
     return <pre>Loading data...</pre>;
   }
-
-  const xValue = (d) => d.sepal_length;
-  const xAxisLabel = "Sepal Length";
-  const yValue = (d) => d.sepal_width;
-  const yAxisLabel = "Sepal Width";
+  // We put the console.log after the !data -guard
+  // console.log(data.columns);
 
   const xScale = scaleLinear()
     .domain(extent(data, xValue))
@@ -34,9 +40,38 @@ function App() {
     .domain(extent(data, yValue))
     .range([0, innerHeight]);
 
+  const options = [
+    {
+      option: "Petal Length",
+      value: "petal_length",
+    },
+    {
+      option: "Petal Width",
+      value: "petal_width",
+    },
+    {
+      option: "Sepal Length",
+      value: "sepal_length",
+    },
+    {
+      option: "Sepal Width",
+      value: "sepal_width",
+    },
+    {
+      option: "Species",
+      value: "species",
+    },
+  ];
+
   return (
     <>
-      <Dropdown />
+      <label htmlFor="selectX">Select your X-axis:</label>
+      <Dropdown
+        options={options}
+        id="selectX"
+        selectedValue={selectedValueX}
+        onSelectedValueChange={setSelectedValueX}
+      />
       <svg height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
           <AxisBottom xScale={xScale} innerHeight={innerHeight} />
@@ -47,7 +82,10 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {xAxisLabel}
+            {options.map(({ option, value }) =>
+              selectedValueX === value ? option : null
+            )}
+            {/* {xAxisLabel} */}
           </text>
           <AxisLeft yScale={yScale} innerWidth={innerWidth} />
           <text

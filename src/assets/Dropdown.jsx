@@ -1,12 +1,15 @@
-const Dropdown = ({ options, onSelectedValueChange, selectedValue }) => (
+const Dropdown = ({ options, id, onSelectedValueChange, selectedValue }) => (
   <select
-    name="pets"
-    id="pet-select"
+    id={id}
     onChange={(evt) => onSelectedValueChange(evt.target.value)}
+    defaultValue={selectedValue}
   >
     <option value="">--Please choose an option--</option>
     {options.map(({ option, value }) => (
-      <option key={value} value={value} selected={value === selectedValue}>
+      <option
+        key={value}
+        value={value} /* defaultValue={value === selectedValue} */
+      >
         {option}
       </option>
     ))}
