@@ -22,8 +22,10 @@ function App() {
   const xValue = (d) => d[selectedValueX];
   // const xAxisLabel = "Sepal Length";
 
-  const yValue = (d) => d.sepal_width;
-  const yAxisLabel = "Sepal Width";
+  const initialValueY = "sepal_width";
+  const [selectedValueY, setSelectedValueY] = useState(initialValueY);
+  const yValue = (d) => d[selectedValueY];
+  // const yAxisLabel = "Sepal Width";
 
   if (!data) {
     return <pre>Loading data...</pre>;
@@ -65,12 +67,19 @@ function App() {
 
   return (
     <>
-      <label htmlFor="selectX">Select your X-axis:</label>
+      <label htmlFor="selectX">Select X-axis:</label>
       <Dropdown
         options={options}
         id="selectX"
         selectedValue={selectedValueX}
         onSelectedValueChange={setSelectedValueX}
+      />
+      <label htmlFor="selectY">Select Y-axis:</label>
+      <Dropdown
+        options={options}
+        id="selectY"
+        selectedValue={selectedValueY}
+        onSelectedValueChange={setSelectedValueY}
       />
       <svg height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
@@ -96,7 +105,10 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {yAxisLabel}
+            {options.map(({ option, value }) =>
+              selectedValueY === value ? option : null
+            )}
+            {/* {yAxisLabel} */}
           </text>
           <DataMarks
             data={data}

@@ -6,6 +6,15 @@
   overflow: hidden;
 }
 
+label {
+  font-size: 1.2em;
+}
+
+select {
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
 .axis-label {
   font-size: 2em;
 }
