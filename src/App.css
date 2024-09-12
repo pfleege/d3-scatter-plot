@@ -19,6 +19,11 @@ select {
   font-size: 2em;
 }
 
+.dropdown-label {
+  margin-left: 100px;
+  margin-right: 15px;
+}
+
 .Dropdown-root {
   display: inline-block;
   width: 150px;

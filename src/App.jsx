@@ -16,6 +16,29 @@ const innerWidth = width - margin.right - margin.left;
 const innerHeight = height - margin.top - margin.bottom;
 const yAxisLabelOffset = 45;
 
+const options = [
+  {
+    value: "petal_length",
+    label: "Petal Length",
+  },
+  {
+    value: "petal_width",
+    label: "Petal Width",
+  },
+  {
+    value: "sepal_length",
+    label: "Sepal Length",
+  },
+  {
+    value: "sepal_width",
+    label: "Sepal Width",
+  },
+  {
+    value: "species",
+    label: "Species",
+  },
+];
+
 function App() {
   const data = useData();
 
@@ -23,6 +46,9 @@ function App() {
   const [selectedValueX, setSelectedValueX] = useState(initialValueX);
   const xValue = (d) => d[selectedValueX];
   // const xAxisLabel = "Sepal Length";
+  const xAxisLabel = options.map(({ label, value }) =>
+    selectedValueX === value ? label : null
+  );
 
   const initialValueY = "sepal_width";
   const [selectedValueY, setSelectedValueY] = useState(initialValueY);
@@ -45,48 +71,25 @@ function App() {
     .range([0, innerHeight])
     .nice();
 
-  const options = [
-    {
-      option: "Petal Length",
-      value: "petal_length",
-    },
-    {
-      option: "Petal Width",
-      value: "petal_width",
-    },
-    {
-      option: "Sepal Length",
-      value: "sepal_length",
-    },
-    {
-      option: "Sepal Width",
-      value: "sepal_width",
-    },
-    {
-      option: "Species",
-      value: "species",
-    },
-  ];
-
   return (
     <>
       {/* <label htmlFor="selectX">Select X-axis:</label> */}
-      <span className="dropDownLabel">X-axis</span>
+      <span className="dropdown-label">X-axis</span>
       <ReactDropdown
         options={options}
         /* id="selectX" */
         value={selectedValueX}
-        onChange={setSelectedValueX}
-        placeholder="Select an option"
+        onChange={({ value }) => setSelectedValueX(value)}
+        /* placeholder="Select an option" */
       />
       {/* <label htmlFor="selectY">Select Y-axis:</label> */}
-      <span className="dropDownLabel">Y-axis</span>
+      <span className="dropdown-label">Y-axis</span>
       <ReactDropdown
         options={options}
         /* id="selectY" */
         value={selectedValueY}
-        onChange={setSelectedValueY}
-        placeholder="Select an option"
+        onChange={({ value }) => setSelectedValueY(value)}
+        /* placeholder="Select an option" */
       />
       <svg height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
@@ -98,10 +101,10 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {options.map(({ option, value }) =>
+            {/* {options.map(({ option, value }) =>
               selectedValueX === value ? option : null
-            )}
-            {/* {xAxisLabel} */}
+            )} */}
+            {xAxisLabel}
           </text>
           <AxisLeft yScale={yScale} innerWidth={innerWidth} />
           <text
@@ -112,8 +115,8 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {options.map(({ option, value }) =>
-              selectedValueY === value ? option : null
+            {options.map(({ label, value }) =>
+              selectedValueY === value ? label : null
             )}
             {/* {yAxisLabel} */}
           </text>
