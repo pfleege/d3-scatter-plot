@@ -54,6 +54,9 @@ function App() {
   const [selectedValueY, setSelectedValueY] = useState(initialValueY);
   const yValue = (d) => d[selectedValueY];
   // const yAxisLabel = "Sepal Width";
+  const yAxisLabel = options.map(({ label, value }) =>
+    selectedValueY === value ? label : null
+  );
 
   if (!data) {
     return <pre>Loading data...</pre>;
@@ -73,24 +76,26 @@ function App() {
 
   return (
     <>
-      {/* <label htmlFor="selectX">Select X-axis:</label> */}
-      <span className="dropdown-label">X-axis</span>
-      <ReactDropdown
-        options={options}
-        /* id="selectX" */
-        value={selectedValueX}
-        onChange={({ value }) => setSelectedValueX(value)}
-        /* placeholder="Select an option" */
-      />
-      {/* <label htmlFor="selectY">Select Y-axis:</label> */}
-      <span className="dropdown-label">Y-axis</span>
-      <ReactDropdown
-        options={options}
-        /* id="selectY" */
-        value={selectedValueY}
-        onChange={({ value }) => setSelectedValueY(value)}
-        /* placeholder="Select an option" */
-      />
+      <div className="dropdown-container">
+        {/* <label htmlFor="selectX">Select X-axis:</label> */}
+        <span className="dropdown-label">X-axis</span>
+        <ReactDropdown
+          options={options}
+          /* id="selectX" */
+          value={selectedValueX}
+          onChange={({ value }) => setSelectedValueX(value)}
+          /* placeholder="Select an option" */
+        />
+        {/* <label htmlFor="selectY">Select Y-axis:</label> */}
+        <span className="dropdown-label">Y-axis</span>
+        <ReactDropdown
+          options={options}
+          /* id="selectY" */
+          value={selectedValueY}
+          onChange={({ value }) => setSelectedValueY(value)}
+          /* placeholder="Select an option" */
+        />
+      </div>
       <svg height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
           <AxisBottom xScale={xScale} innerHeight={innerHeight} />
@@ -115,10 +120,10 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {options.map(({ label, value }) =>
+            {/* {options.map(({ label, value }) =>
               selectedValueY === value ? label : null
-            )}
-            {/* {yAxisLabel} */}
+            )} */}
+            {yAxisLabel}
           </text>
           <DataMarks
             data={data}
