@@ -18,3 +18,17 @@ select {
 .axis-label {
   font-size: 2em;
 }
+
+.Dropdown-root {
+  display: inline-block;
+  width: 150px;
+  text-align: start;
+}
+
+.Dropdown-control {
+  height: 30px;
+}
+
+.Dropdown-menu {
+  height: 400px;
+}

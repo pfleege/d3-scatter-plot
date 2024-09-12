@@ -1,10 +1,12 @@
 import "./App.css";
 import { extent, scaleLinear } from "d3";
+import ReactDropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import useData from "./assets/useData";
 import DataMarks from "./assets/DataMarks";
 import AxisBottom from "./assets/AxisBottom";
 import AxisLeft from "./assets/AxisLeft";
-import Dropdown from "./assets/Dropdown";
+// import Dropdown from "./assets/Dropdown";
 import { useState } from "react";
 
 const width = 960;
@@ -40,7 +42,8 @@ function App() {
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
-    .range([0, innerHeight]);
+    .range([0, innerHeight])
+    .nice();
 
   const options = [
     {
@@ -67,19 +70,23 @@ function App() {
 
   return (
     <>
-      <label htmlFor="selectX">Select X-axis:</label>
-      <Dropdown
+      {/* <label htmlFor="selectX">Select X-axis:</label> */}
+      <span className="dropDownLabel">X-axis</span>
+      <ReactDropdown
         options={options}
-        id="selectX"
-        selectedValue={selectedValueX}
-        onSelectedValueChange={setSelectedValueX}
+        /* id="selectX" */
+        value={selectedValueX}
+        onChange={setSelectedValueX}
+        placeholder="Select an option"
       />
-      <label htmlFor="selectY">Select Y-axis:</label>
-      <Dropdown
+      {/* <label htmlFor="selectY">Select Y-axis:</label> */}
+      <span className="dropDownLabel">Y-axis</span>
+      <ReactDropdown
         options={options}
-        id="selectY"
-        selectedValue={selectedValueY}
-        onSelectedValueChange={setSelectedValueY}
+        /* id="selectY" */
+        value={selectedValueY}
+        onChange={setSelectedValueY}
+        placeholder="Select an option"
       />
       <svg height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
