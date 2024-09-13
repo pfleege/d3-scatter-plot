@@ -1,5 +1,5 @@
 import "./App.css";
-import { extent, scaleLinear } from "d3";
+import { extent, scaleLinear, scaleOrdinal } from "d3";
 import ReactDropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import useData from "./assets/useData";
@@ -58,6 +58,8 @@ function App() {
     selectedValueY === value ? label : null
   );
 
+  const colorValue = (d) => d.species;
+
   if (!data) {
     return <pre>Loading data...</pre>;
   }
@@ -73,6 +75,10 @@ function App() {
     .domain(extent(data, yValue))
     .range([0, innerHeight])
     .nice();
+
+  const colorScale = scaleOrdinal().domain(data.map(colorValue));
+
+  console.log(colorScale.domain());
 
   return (
     <>
