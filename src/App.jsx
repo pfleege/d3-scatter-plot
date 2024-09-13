@@ -8,6 +8,7 @@ import AxisBottom from "./assets/AxisBottom";
 import AxisLeft from "./assets/AxisLeft";
 // import Dropdown from "./assets/Dropdown";
 import { useState } from "react";
+import ColorLegend from "./assets/ColorLegend";
 
 const width = 960;
 const height = 500;
@@ -134,6 +135,7 @@ function App() {
             )} */}
             {yAxisLabel}
           </text>
+          <ColorLegend colorScale={colorScale} />
           <DataMarks
             data={data}
             xScale={xScale}
