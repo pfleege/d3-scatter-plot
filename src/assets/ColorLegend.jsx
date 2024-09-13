@@ -1,12 +1,16 @@
-const ColorLegend = ({ colorScale }) => {
-  return colorScale.domain().map((domainValue) => {
-    return (
-      <g key={domainValue}>
-        <circle r={7} fill={colorScale(domainValue)}></circle>
-        <text fill="white">{domainValue}</text>
-      </g>
-    );
-  });
-};
+const ColorLegend = ({
+  colorScale,
+  legendSpacing = 20,
+  tickSize = 5,
+  tickTextOffsetX = 20,
+}) =>
+  colorScale.domain().map((domainValue, i) => (
+    <g key={domainValue} transform={`translate(0,${i * legendSpacing})`}>
+      <circle r={tickSize} fill={colorScale(domainValue)}></circle>
+      <text x={tickTextOffsetX} dy="0.32em" fill="white">
+        {domainValue}
+      </text>
+    </g>
+  ));
 
 export default ColorLegend;

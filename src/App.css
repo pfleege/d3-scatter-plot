@@ -37,3 +37,7 @@ div.Dropdown-control {
 div.Dropdown-menu {
   max-height: 400px;
 }
+
+.legend-label {
+  font-size: 1.4em;
+}

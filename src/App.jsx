@@ -12,10 +12,11 @@ import ColorLegend from "./assets/ColorLegend";
 
 const width = 960;
 const height = 500;
-const margin = { top: 20, right: 20, bottom: 70, left: 200 };
+const margin = { top: 20, right: 20, bottom: 70, left: 220 };
 const innerWidth = width - margin.right - margin.left;
 const innerHeight = height - margin.top - margin.bottom;
 const yAxisLabelOffset = 45;
+const legendOffsetX = -200;
 
 const options = [
   {
@@ -60,6 +61,7 @@ function App() {
   );
 
   const colorValue = (d) => d.species;
+  const legendLabel = "Species";
 
   if (!data) {
     return <pre>Loading data...</pre>;
@@ -81,8 +83,8 @@ function App() {
     .domain(data.map(colorValue))
     .range(["#E6842A", "#42A5B3", "#A0B700"]);
 
-  console.log(colorScale.domain());
-  console.log(colorScale.range());
+  // console.log(colorScale.domain());
+  // console.log(colorScale.range());
 
   return (
     <>
@@ -135,7 +137,17 @@ function App() {
             )} */}
             {yAxisLabel}
           </text>
-          <ColorLegend colorScale={colorScale} />
+          <g transform={`translate(${legendOffsetX},20)`}>
+            <text className="legend-label" fill="white" y={-22}>
+              {legendLabel}
+            </text>
+            <ColorLegend
+              colorScale={colorScale}
+              legendSpacing={25}
+              tickSize={10}
+              tickTextOffsetX={20}
+            />
+          </g>
           <DataMarks
             data={data}
             xScale={xScale}
