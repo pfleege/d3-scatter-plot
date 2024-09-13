@@ -76,9 +76,12 @@ function App() {
     .range([0, innerHeight])
     .nice();
 
-  const colorScale = scaleOrdinal().domain(data.map(colorValue));
+  const colorScale = scaleOrdinal()
+    .domain(data.map(colorValue))
+    .range(["#E6842A", "#42A5B3", "#A0B700"]);
 
   console.log(colorScale.domain());
+  console.log(colorScale.range());
 
   return (
     <>
@@ -135,8 +138,10 @@ function App() {
             data={data}
             xScale={xScale}
             yScale={yScale}
+            colorScale={colorScale}
             xValue={xValue}
             yValue={yValue}
+            colorValue={colorValue}
           />
         </g>
       </svg>

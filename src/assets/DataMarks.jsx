@@ -1,11 +1,19 @@
-const DataMarks = ({ data, xScale, yScale, xValue, yValue }) => {
+const DataMarks = ({
+  data,
+  xScale,
+  yScale,
+  colorScale,
+  xValue,
+  yValue,
+  colorValue,
+}) => {
   return data.map((d, i) => (
     <circle
       key={i}
       cx={xScale(xValue(d))}
       cy={yScale(yValue(d))}
       r={10}
-      fill={"aquamarine"}
+      fill={colorScale(colorValue(d))}
     />
   ));
 };
