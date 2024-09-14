@@ -6,6 +6,12 @@
   overflow: hidden;
 }
 
+body {
+  height: 100vh;
+  background-color: #333;
+  overflow: hidden;
+}
+
 .axis-label {
   font-size: 2em;
 }
@@ -25,7 +31,7 @@
   display: inline-block;
   width: 200px;
   text-align: start;
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 div.Dropdown-control {
@@ -40,4 +46,14 @@ div.Dropdown-menu {
 
 .legend-label {
   font-size: 1.4em;
+}
+
+.legend {
+  cursor: default;
+}
+
+.legend-info {
+  font-size: 0.7em;
+  fill: orange;
+  font-weight: bold;
 }

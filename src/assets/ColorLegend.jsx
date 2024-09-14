@@ -8,6 +8,7 @@ const ColorLegend = ({
   colorScale.domain().map((domainValue, i) => (
     <g
       key={domainValue}
+      className="legend"
       transform={`translate(0,${i * legendSpacing})`}
       onMouseEnter={() => onHover(domainValue)}
       onMouseLeave={() => onHover(null)}

@@ -149,6 +149,9 @@ function App() {
               tickTextOffsetX={20}
               onHover={setSelectedSpecies}
             />
+            <text className="legend-info" fill="white" x={-10} y={80}>
+              Hover over to filter data
+            </text>
           </g>
           <DataMarks
             data={data}
