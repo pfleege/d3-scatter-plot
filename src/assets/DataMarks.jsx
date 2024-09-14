@@ -13,7 +13,7 @@ const DataMarks = ({
       key={i}
       cx={xScale(xValue(d))}
       cy={yScale(yValue(d))}
-      r={10}
+      r={15}
       fill={colorScale(colorValue(d))}
       opacity={opacity}
     />

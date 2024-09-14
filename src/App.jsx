@@ -82,7 +82,7 @@ function App() {
 
   const colorScale = scaleOrdinal()
     .domain(data.map(colorValue))
-    .range(["#E6842A", "#42A5B3", "#A0B700"]);
+    .range(["#ffcc00", "#ff2f00", "#002aff"]);
 
   // console.log(colorScale.domain());
   // console.log(colorScale.range());
@@ -145,7 +145,7 @@ function App() {
             <ColorLegend
               colorScale={colorScale}
               legendSpacing={25}
-              tickSize={10}
+              tickSize={7}
               tickTextOffsetX={20}
               onHover={setSelectedSpecies}
             />
