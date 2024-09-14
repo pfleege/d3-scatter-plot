@@ -151,12 +151,21 @@ function App() {
             />
           </g>
           <DataMarks
+            data={data}
+            xScale={xScale}
+            yScale={yScale}
+            colorScale={colorScale}
+            xValue={xValue}
+            yValue={yValue}
+            colorValue={colorValue}
+            opacity={selectedSpecies ? 0.2 : 1}
+          />
+          <DataMarks
             data={
               selectedSpecies
                 ? data.filter((marks) => marks.species === selectedSpecies)
                 : data
             }
-            // data={data}
             xScale={xScale}
             yScale={yScale}
             colorScale={colorScale}

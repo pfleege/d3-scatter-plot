@@ -6,6 +6,7 @@ const DataMarks = ({
   xValue,
   yValue,
   colorValue,
+  opacity = 1,
 }) => {
   return data.map((d, i) => (
     <circle
@@ -14,6 +15,7 @@ const DataMarks = ({
       cy={yScale(yValue(d))}
       r={10}
       fill={colorScale(colorValue(d))}
+      opacity={opacity}
     />
   ));
 };

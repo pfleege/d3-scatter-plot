@@ -9,7 +9,8 @@ const ColorLegend = ({
     <g
       key={domainValue}
       transform={`translate(0,${i * legendSpacing})`}
-      onMouseOver={() => onHover(domainValue)}
+      onMouseEnter={() => onHover(domainValue)}
+      onMouseLeave={() => onHover(null)}
     >
       <circle r={tickSize} fill={colorScale(domainValue)}></circle>
       <text x={tickTextOffsetX} dy="0.32em" fill="white">
