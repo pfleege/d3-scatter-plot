@@ -6,7 +6,6 @@ import useData from "./assets/useData";
 import DataMarks from "./assets/DataMarks";
 import AxisBottom from "./assets/AxisBottom";
 import AxisLeft from "./assets/AxisLeft";
-// import Dropdown from "./assets/Dropdown";
 import { useState } from "react";
 import ColorLegend from "./assets/ColorLegend";
 
@@ -47,7 +46,6 @@ function App() {
   const initialValueX = "sepal_length";
   const [selectedValueX, setSelectedValueX] = useState(initialValueX);
   const xValue = (d) => d[selectedValueX];
-  // const xAxisLabel = "Sepal Length";
   const xAxisLabel = options.map(({ label, value }) =>
     selectedValueX === value ? label : null
   );
@@ -55,7 +53,6 @@ function App() {
   const initialValueY = "sepal_width";
   const [selectedValueY, setSelectedValueY] = useState(initialValueY);
   const yValue = (d) => d[selectedValueY];
-  // const yAxisLabel = "Sepal Width";
   const yAxisLabel = options.map(({ label, value }) =>
     selectedValueY === value ? label : null
   );
@@ -67,8 +64,6 @@ function App() {
   if (!data) {
     return <pre>Loading data...</pre>;
   }
-  // We put the console.log after the !data -guard
-  // console.log(data.columns);
 
   const xScale = scaleLinear()
     .domain(extent(data, xValue))
@@ -84,29 +79,20 @@ function App() {
     .domain(data.map(colorValue))
     .range(["#ffcc00", "#ff2f00", "#002aff"]);
 
-  // console.log(colorScale.domain());
-  // console.log(colorScale.range());
-  console.log(selectedSpecies);
   return (
     <>
       <div className="dropdown-container">
-        {/* <label htmlFor="selectX">Select X-axis:</label> */}
         <span className="dropdown-label">X-axis</span>
         <ReactDropdown
           options={options}
-          /* id="selectX" */
           value={selectedValueX}
           onChange={({ value }) => setSelectedValueX(value)}
-          /* placeholder="Select an option" */
         />
-        {/* <label htmlFor="selectY">Select Y-axis:</label> */}
         <span className="dropdown-label">Y-axis</span>
         <ReactDropdown
           options={options}
-          /* id="selectY" */
           value={selectedValueY}
           onChange={({ value }) => setSelectedValueY(value)}
-          /* placeholder="Select an option" */
         />
       </div>
       <svg className="svgCanvas" height={height} width={width}>
@@ -119,9 +105,6 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {/* {options.map(({ option, value }) =>
-              selectedValueX === value ? option : null
-            )} */}
             {xAxisLabel}
           </text>
           <AxisLeft yScale={yScale} innerWidth={innerWidth} />
@@ -133,9 +116,6 @@ function App() {
             textAnchor="middle"
             fill="white"
           >
-            {/* {options.map(({ label, value }) =>
-              selectedValueY === value ? label : null
-            )} */}
             {yAxisLabel}
           </text>
           <g transform={`translate(${legendOffsetX}, 40)`}>

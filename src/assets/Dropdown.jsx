@@ -6,10 +6,7 @@ const Dropdown = ({ options, id, onSelectedValueChange, selectedValue }) => (
   >
     <option value="">--Please choose an option--</option>
     {options.map(({ option, value }) => (
-      <option
-        key={value}
-        value={value} /* defaultValue={value === selectedValue} */
-      >
+      <option key={value} value={value}>
         {option}
       </option>
     ))}

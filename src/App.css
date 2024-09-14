@@ -3,7 +3,6 @@
 
 #root {
   font-family: "Titillium Web", sans-serif;
-  /* max-width: 1280px; */
   margin: 0;
   padding: 0;
   text-align: center;
@@ -19,11 +18,11 @@ h1 {
 }
 
 body {
-  height: 100vh;
+  height: 1000px;
+  min-height: 100vh;
   background-image: url(./images/body-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
 }
 
 nav {
@@ -114,9 +113,32 @@ div.Dropdown-menu {
 .legend-info {
   font-size: 0.7em;
   fill: orange;
-  /* font-weight: bold; */
 }
 
 .dataMark {
   stroke: #333;
+}
+
+.ics-container {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  gap: 5px;
+  position: fixed;
+  bottom: 15px;
+  right: 8px;
+  background-color: rgba(86, 86, 86, 0.9);
+  border-radius: 10px;
+  padding: 5px 5px 0 15px;
+}
+
+a > img.icsLogo {
+  height: 25px;
+}
+
+p.ics-p {
+  color: #fff;
+  font-style: italic;
+  font-size: 1.1em;
+  padding-bottom: 5px;
 }
