@@ -20,7 +20,9 @@ h1 {
 
 body {
   height: 100vh;
-  background-color: #333;
+  background-image: url(./images/body-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
 
@@ -68,12 +70,13 @@ nav > img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin: 50px 90px 20px 0;
 }
 
 .dropdown-label {
-  margin-left: 50px;
+  margin-left: 30px;
   margin-right: 15px;
+  font-size: 1.7em;
 }
 
 .Dropdown-root {
@@ -101,8 +104,19 @@ div.Dropdown-menu {
   cursor: default;
 }
 
+.svgCanvas {
+  background-color: rgba(51, 51, 51, 0.7);
+  border: 2px solid #333;
+  box-shadow: 3px 3px 10px 3px white;
+  border-radius: 20px;
+}
+
 .legend-info {
   font-size: 0.7em;
   fill: orange;
-  font-weight: bold;
+  /* font-weight: bold; */
+}
+
+.dataMark {
+  stroke: #333;
 }

@@ -10,6 +10,7 @@ const DataMarks = ({
 }) => {
   return data.map((d, i) => (
     <circle
+      className="dataMark"
       key={i}
       cx={xScale(xValue(d))}
       cy={yScale(yValue(d))}

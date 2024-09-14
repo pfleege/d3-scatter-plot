@@ -12,11 +12,11 @@ import ColorLegend from "./assets/ColorLegend";
 
 const width = 960;
 const height = 500;
-const margin = { top: 20, right: 20, bottom: 70, left: 220 };
+const margin = { top: 20, right: 170, bottom: 70, left: 100 };
 const innerWidth = width - margin.right - margin.left;
 const innerHeight = height - margin.top - margin.bottom;
 const yAxisLabelOffset = 45;
-const legendOffsetX = -200;
+const legendOffsetX = 730;
 
 const options = [
   {
@@ -109,7 +109,7 @@ function App() {
           /* placeholder="Select an option" */
         />
       </div>
-      <svg height={height} width={width}>
+      <svg className="svgCanvas" height={height} width={width}>
         <g transform={`translate(${margin.left}, ${margin.top})`}>
           <AxisBottom xScale={xScale} innerHeight={innerHeight} />
           <text
@@ -138,7 +138,7 @@ function App() {
             )} */}
             {yAxisLabel}
           </text>
-          <g transform={`translate(${legendOffsetX},20)`}>
+          <g transform={`translate(${legendOffsetX}, 40)`}>
             <text className="legend-label" fill="white" y={-22}>
               {legendLabel}
             </text>
