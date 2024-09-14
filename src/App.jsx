@@ -60,6 +60,7 @@ function App() {
     selectedValueY === value ? label : null
   );
 
+  const [selectedSpecies, setSelectedSpecies] = useState(null);
   const colorValue = (d) => d.species;
   const legendLabel = "Species";
 
@@ -85,7 +86,7 @@ function App() {
 
   // console.log(colorScale.domain());
   // console.log(colorScale.range());
-
+  console.log(selectedSpecies);
   return (
     <>
       <div className="dropdown-container">
@@ -146,6 +147,7 @@ function App() {
               legendSpacing={25}
               tickSize={10}
               tickTextOffsetX={20}
+              onHover={setSelectedSpecies}
             />
           </g>
           <DataMarks
