@@ -1,6 +1,6 @@
 # D3 Scatter Plot - React demo application with GitHub Gist connection.
 
-![](./src/assets/scatterPlotDemo.png)
+![](./src/images/scatterPlotDemo.png)
 
 <p align="center">
   Weather Application Demo Page by <a href="https://iceeqsolutions.fi/">iCeeqSolutions</a>
@@ -37,5 +37,5 @@ By selecting a combination of features to view on the x-axis and y-axis, we can 
 
 <br/><br/>
 
-<p align="center"><a href="https://iceeqsolutions.fi/"><img height="61px" width="300px" src="./src/assets/iCS_Logo_Light.png"></a></p>
+<p align="center"><a href="https://iceeqsolutions.fi/"><img height="61px" width="300px" src="./src/images/iCS_Logo_Light.png"></a></p>
 <br/><br/>
