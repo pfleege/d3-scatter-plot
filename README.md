@@ -3,7 +3,7 @@
 ![](./src/images/scatterPlotDemo.png)
 
 <p align="center">
-  Weather Application Demo Page by <a href="https://iceeqsolutions.fi/">iCeeqSolutions</a>
+  D3 Scatter Plot Demo by <a href="https://iceeqsolutions.fi/">iCeeqSolutions</a>
 </p>
 
 ## About
